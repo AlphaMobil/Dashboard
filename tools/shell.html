@@ -98,17 +98,28 @@ html,body{margin:0;background:color-mix(in srgb,var(--color-fg) 5%,var(--color-b
   const KEY = 'hc_pw';
   const $ = id => document.getElementById(id);
   const ub = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
-  async function oeffnen(pw){
+  async function oeffnenEnc(E, pw){
     if (!window.crypto || !crypto.subtle) throw new Error('Dieser Browser unterstützt keine Verschlüsselung. Bitte einen aktuellen Browser verwenden.');
     const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
-    const key = await crypto.subtle.deriveKey({name: 'PBKDF2', salt: ub(ENC.s), iterations: ENC.n, hash: 'SHA-256'}, base, {name: 'AES-GCM', length: 256}, false, ['decrypt']);
-    const plain = await crypto.subtle.decrypt({name: 'AES-GCM', iv: ub(ENC.i)}, key, ub(ENC.c));
+    const key = await crypto.subtle.deriveKey({name: 'PBKDF2', salt: ub(E.s), iterations: E.n, hash: 'SHA-256'}, base, {name: 'AES-GCM', length: 256}, false, ['decrypt']);
+    const plain = await crypto.subtle.decrypt({name: 'AES-GCM', iv: ub(E.i)}, key, ub(E.c));
     return JSON.parse(new TextDecoder().decode(plain));
   }
-  function start(D, pw, merken){
+  const oeffnen = (pw) => oeffnenEnc(ENC, pw);
+  async function google(pw){
+    // Google-Bewertungen kommen getrennt (täglich per GitHub-Workflow über die offizielle API)
+    try {
+      const r = await fetch('google.enc.json', {cache: 'no-store'});
+      if (!r.ok) return null;
+      return await oeffnenEnc(await r.json(), pw);
+    } catch (e) { return null; }
+  }
+  async function start(D, pw, merken){
     try { merken ? localStorage.setItem(KEY, pw) : localStorage.removeItem(KEY); } catch (e) {}
     $('gate').hidden = true;
-    dash.__load({products: D.products, reviews: D.reviews});
+    const G = await google(pw);
+    const reviews = D.reviews.filter(r => r.shop !== 'Google').concat(G && G.reviews ? G.reviews : []);
+    dash.__load({products: D.products, reviews: reviews});
     const root = $('dash-root');
     const frag = $('page').content.cloneNode(true);
     const scripts = [...frag.querySelectorAll('script')];
@@ -124,7 +135,7 @@ html,body{margin:0;background:color-mix(in srgb,var(--color-fg) 5%,var(--color-b
     e.preventDefault();
     const pw = $('gpw').value.trim(); if (!pw) return;
     $('gbtn').disabled = true; $('gbtn').textContent = 'Wird geöffnet …'; $('gerr').hidden = true;
-    try { start(await oeffnen(pw), pw, $('gkeep').checked); }
+    try { await start(await oeffnen(pw), pw, $('gkeep').checked); }
     catch (err) {
       $('gerr').textContent = err && err.name === 'OperationError' ? 'Das Passwort stimmt nicht. Bitte noch einmal versuchen.' : (err.message || 'Die Seite konnte nicht geöffnet werden.');
       $('gerr').hidden = false; $('gpw').select();

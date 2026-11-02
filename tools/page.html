@@ -121,7 +121,7 @@
 
     <div class="row r1">
       <div class="card">
-        <div class="cardhead"><h2>Gelistete Produktseiten</h2><span class="pill gray">5 Kanäle</span></div>
+        <div class="cardhead"><h2>Gelistete Produktseiten</h2><span class="pill gray">Händler · Shop · Google · Trustpilot</span></div>
         <div class="big" data-draw="k_listings" data-source="kpi" data-field="listings">—</div>
         <div class="pillrow"><span class="pill"><span data-draw="k_models" data-source="kpi" data-field="models">—</span>&nbsp;Modelle</span>über alle Shops</div>
         <div class="btns">
@@ -136,6 +136,7 @@
             <div class="w"><div class="n"><i style="background:#00843D"></i>hagebau</div><div class="v" data-draw="shopnum" data-source="shops" data-field="listings" data-where="shop=hagebau">—</div><div class="s"><span data-draw="shopstar" data-source="shops" data-field="stars" data-where="shop=hagebau">—</span> ★</div></div>
             <div class="w"><div class="n"><i style="background:#E10915"></i>Kaufland</div><div class="v" data-draw="shopnum" data-source="shops" data-field="listings" data-where="shop=Kaufland">—</div><div class="s"><span data-draw="shopstar" data-source="shops" data-field="stars" data-where="shop=Kaufland">—</span> ★</div></div>
             <div class="w"><div class="n"><i style="background:#004177"></i>alpha-mobil.com</div><div class="v" data-draw="shopnum" data-source="shops" data-field="listings" data-where="shop=alpha-mobil.com">—</div><div class="s"><span data-draw="shopstar" data-source="shops" data-field="stars" data-where="shop=alpha-mobil.com">—</span> ★</div></div>
+            <div class="w"><div class="n"><i style="background:#4285F4"></i>Google</div><div class="v" data-draw="gnum" data-source="gstats" data-field="n">—</div><div class="s"><span data-draw="gstar" data-source="gstats" data-field="stars">—</span> ★ · Bewertungen</div></div>
             <div class="w"><div class="n"><i style="background:#00B67A"></i>Trustpilot</div><div class="v" data-draw="tpnum" data-source="tpstats" data-field="n">—</div><div class="s"><span data-draw="tpstar" data-source="tpstats" data-field="stars">—</span> ★ · Bewertungen</div></div>
           </div>
         </div>
@@ -350,6 +351,9 @@
   dash.calc('tpstats', {inputs: ['reviews'], title: 'Trustpilot', description: 'Anzahl der erfassten Trustpilot-Bewertungen und Durchschnitt der Sterne.',
     fn: (reviews) => { const t = reviews.filter(r => r.shop === 'Trustpilot'); return [{n: t.length, stars: t.length ? t.reduce((s, r) => s + r.sterne, 0) / t.length : null}]; }});
 
+  dash.calc('gstats', {inputs: ['reviews'], title: 'Google', description: 'Anzahl der Google-Bewertungen und Durchschnitt der Sterne.',
+    fn: (reviews) => { const t = reviews.filter(r => r.shop === 'Google'); return [{n: t.length, stars: t.length ? t.reduce((s, r) => s + r.sterne, 0) / t.length : null}]; }});
+
   dash.calc('themen', {inputs: ['reviews'], title: 'Bewertungen je Thema', description: 'Zählt Bewertungstexte je Thema und Stimmung.',
     fn: (reviews) => { const by = {}; reviews.forEach(r => { const t = r.thema || 'Sonstiges'; const o = by[t] = by[t] || {thema: t, positiv: 0, neutral: 0, negativ: 0, total: 0}; o[r.stimmung] = (o[r.stimmung] || 0) + 1; o.total++; }); return Object.values(by).sort((a, b) => (b.negativ - a.negativ) || (b.total - a.total)); }});
 
@@ -389,6 +393,8 @@
   dash.draw('k_third', (el) => { const d = dash.data('flagcount'); const r = d.status === 'ok' ? d.data.find(x => x.art === 'Drittanbieter') : null; el.textContent = r ? int(r.n) : '—'; });
   const shopRow = (el) => { const d = dash.data('shops'); return d.status === 'ok' ? d.data.find(x => x.shop === whereVal(el)) : null; };
   dash.draw('shopnum', (el) => { const r = shopRow(el); el.textContent = r ? int(r.listings) : '—'; });
+  dash.draw('gnum', (el) => { const d = dash.data('gstats'); el.textContent = d.status === 'ok' ? (d.data[0].n ? int(d.data[0].n) : '–') : '—'; });
+  dash.draw('gstar', (el) => { const d = dash.data('gstats'); el.textContent = d.status === 'ok' ? star(d.data[0].stars) : '—'; });
   dash.draw('tpnum', (el) => { const d = dash.data('tpstats'); el.textContent = d.status === 'ok' ? int(d.data[0].n) : '—'; });
   dash.draw('tpstar', (el) => { const d = dash.data('tpstats'); el.textContent = d.status === 'ok' ? star(d.data[0].stars) : '—'; });
   dash.draw('shopstar', (el) => { const r = shopRow(el); el.textContent = r ? star(r.stars) : '—'; });
