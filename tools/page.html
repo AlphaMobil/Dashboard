@@ -112,7 +112,7 @@
       <button class="tab" role="tab" data-tab="bewertungen" aria-selected="false">Bewertungen</button>
       <button class="tab" role="tab" data-tab="produkte" aria-selected="false">Produkte</button>
     </div>
-    <div class="stamp"><span class="dot">⟳</span><div>Stand 02.11.2026<small>Lidl · Netto · hagebau · Kaufland</small></div></div>
+    <div class="stamp"><span class="dot">⟳</span><div>Stand 02.11.2026<small>Händler, eigener Shop und Trustpilot</small></div></div>
   </div>
 
   <section data-page="uebersicht">
@@ -121,7 +121,7 @@
 
     <div class="row r1">
       <div class="card">
-        <div class="cardhead"><h2>Gelistete Produktseiten</h2><span class="pill gray">4 Händler</span></div>
+        <div class="cardhead"><h2>Gelistete Produktseiten</h2><span class="pill gray">5 Kanäle</span></div>
         <div class="big" data-draw="k_listings" data-source="kpi" data-field="listings">—</div>
         <div class="pillrow"><span class="pill"><span data-draw="k_models" data-source="kpi" data-field="models">—</span>&nbsp;Modelle</span>über alle Shops</div>
         <div class="btns">
@@ -135,6 +135,8 @@
             <div class="w"><div class="n"><i style="background:#F2C200"></i>Netto</div><div class="v" data-draw="shopnum" data-source="shops" data-field="listings" data-where="shop=Netto">—</div><div class="s"><span data-draw="shopstar" data-source="shops" data-field="stars" data-where="shop=Netto">—</span> ★</div></div>
             <div class="w"><div class="n"><i style="background:#00843D"></i>hagebau</div><div class="v" data-draw="shopnum" data-source="shops" data-field="listings" data-where="shop=hagebau">—</div><div class="s"><span data-draw="shopstar" data-source="shops" data-field="stars" data-where="shop=hagebau">—</span> ★</div></div>
             <div class="w"><div class="n"><i style="background:#E10915"></i>Kaufland</div><div class="v" data-draw="shopnum" data-source="shops" data-field="listings" data-where="shop=Kaufland">—</div><div class="s"><span data-draw="shopstar" data-source="shops" data-field="stars" data-where="shop=Kaufland">—</span> ★</div></div>
+            <div class="w"><div class="n"><i style="background:#004177"></i>alpha-mobil.com</div><div class="v" data-draw="shopnum" data-source="shops" data-field="listings" data-where="shop=alpha-mobil.com">—</div><div class="s"><span data-draw="shopstar" data-source="shops" data-field="stars" data-where="shop=alpha-mobil.com">—</span> ★</div></div>
+            <div class="w"><div class="n"><i style="background:#00B67A"></i>Trustpilot</div><div class="v" data-draw="tpnum" data-source="tpstats" data-field="n">—</div><div class="s"><span data-draw="tpstar" data-source="tpstats" data-field="stars">—</span> ★ · Bewertungen</div></div>
           </div>
         </div>
       </div>
@@ -200,7 +202,7 @@
     <p class="sub">Günstigster Preis je Händler – Preisfehler und Zubehör ausgenommen.</p>
     <div class="card" style="margin-bottom:16px">
       <div class="cardhead"><div><h2>Preis je Modell und Händler</h2><p class="note">Meistgelistete Modelle mit mindestens zwei Händlern. Punkt antippen für Details.</p></div>
-        <div class="legend"><span><i style="background:#0050AA"></i>Lidl</span><span><i style="background:#F2C200"></i>Netto</span><span><i style="background:#00843D"></i>hagebau</span><span><i style="background:#E10915"></i>Kaufland</span></div></div>
+        <div class="legend"><span><i style="background:#0050AA"></i>Lidl</span><span><i style="background:#F2C200"></i>Netto</span><span><i style="background:#00843D"></i>hagebau</span><span><i style="background:#E10915"></i>Kaufland</span><span><i style="background:#004177"></i>alpha-mobil.com</span></div></div>
       <div class="inner"><div class="chart" data-draw="c_prices" data-source="matrix" style="min-height:420px"></div></div>
     </div>
     <div class="card">
@@ -208,7 +210,7 @@
       <p class="note">Leer = dort nicht gelistet. Spaltenkopf klicken zum Sortieren.</p>
       <div class="tbox">
         <table data-source="matrix" data-row-key="modell">
-          <thead><tr><th data-field="modell"><button data-sort="modell">Modell</button></th><th data-field="marke"><button data-sort="marke">Marke</button></th><th class="r" data-field="lidl"><button data-sort="lidl">Lidl</button></th><th class="r" data-field="netto"><button data-sort="netto">Netto</button></th><th class="r" data-field="hagebau"><button data-sort="hagebau">hagebau</button></th><th class="r" data-field="kaufland"><button data-sort="kaufland">Kaufland</button></th><th class="r" data-field="spanne"><button data-sort="spanne">Spanne</button></th><th class="r" data-field="shops"><button data-sort="shops">Händler</button></th></tr></thead>
+          <thead><tr><th data-field="modell"><button data-sort="modell">Modell</button></th><th data-field="marke"><button data-sort="marke">Marke</button></th><th class="r" data-field="lidl"><button data-sort="lidl">Lidl</button></th><th class="r" data-field="netto"><button data-sort="netto">Netto</button></th><th class="r" data-field="hagebau"><button data-sort="hagebau">hagebau</button></th><th class="r" data-field="kaufland"><button data-sort="kaufland">Kaufland</button></th><th class="r" data-field="eigen"><button data-sort="eigen">alpha-mobil.com</button></th><th class="r" data-field="spanne"><button data-sort="spanne">Spanne</button></th><th class="r" data-field="shops"><button data-sort="shops">Händler</button></th></tr></thead>
           <tbody data-draw="t_matrix"></tbody>
         </table>
       </div>
@@ -266,6 +268,7 @@
         <div class="cardhead"><h2>Bewertungen</h2>
           <div class="tools"><input class="search rvsearch" type="search" placeholder="Suchen" aria-label="Bewertungen durchsuchen">
             <select class="rvmood" aria-label="Stimmung"><option value="">Alle Stimmungen</option><option value="negativ">Negativ</option><option value="neutral">Neutral</option><option value="positiv">Positiv</option></select>
+            <select class="rvshop" aria-label="Quelle"><option value="">Alle Quellen</option><option value="Lidl">Lidl</option><option value="alpha-mobil.com">alpha-mobil.com</option><option value="Trustpilot">Trustpilot</option><option value="Netto">Netto</option><option value="hagebau">hagebau</option><option value="Kaufland">Kaufland</option><option value="Otto">Otto</option><option value="Google">Google</option></select>
             <select class="rvsort" aria-label="Sortierung"><option value="datum">Neueste zuerst</option><option value="kritisch">Kritische zuerst</option></select></div></div>
         <div class="tbox" style="max-height:44rem"><div class="feed" data-draw="rv_feed" data-source="reviews"></div></div>
       </div>
@@ -284,7 +287,7 @@
     <div class="card">
       <div class="cardhead"><h2>Produktseiten</h2>
         <div class="tools"><input class="search prodsearch" type="search" placeholder="z. B. Mustang Topcase" aria-label="Produkte durchsuchen">
-          <select class="shopfilter" aria-label="Händler"><option value="">Alle Händler</option><option value="Lidl">Lidl</option><option value="Netto">Netto</option><option value="hagebau">hagebau</option><option value="Kaufland">Kaufland</option></select></div></div>
+          <select class="shopfilter" aria-label="Händler"><option value="">Alle Händler</option><option value="Lidl">Lidl</option><option value="Netto">Netto</option><option value="hagebau">hagebau</option><option value="Kaufland">Kaufland</option><option value="alpha-mobil.com">alpha-mobil.com</option></select></div></div>
       <div class="tbox" style="max-height:40rem">
         <table data-source="products" data-row-key="shop,artnr">
           <thead><tr><th data-field="shop"><button data-psort="shop">Händler</button></th><th data-field="artnr"><button data-psort="artnr">Art.-Nr.</button></th><th data-field="produkt"><button data-psort="produkt">Produkt</button></th><th data-field="typ"><button data-psort="typ">Typ</button></th><th data-field="farbe"><button data-psort="farbe">Farbe</button></th><th data-field="ausstattung">Ausstattung</th><th class="r" data-field="preis"><button data-psort="preis">Preis</button></th><th class="r" data-field="bewertungen"><button data-psort="bewertungen">Bew.</button></th><th class="r" data-field="sterne"><button data-psort="sterne">Sterne</button></th></tr></thead>
@@ -324,7 +327,7 @@
     fn: (flags) => ['Preisfehler', 'Drittanbieter', 'Über Marktpreis', 'Schwache Bewertung'].map(art => ({art, n: flags.filter(f => f.art === art).length}))});
 
   dash.calc('shops', {inputs: ['products', 'dedup', 'flags'], title: 'Kennzahlen je Shop', description: 'Seiten je Marke, Bewertungen ohne Dubletten, gewichtete Sterne und Auffälligkeiten je Shop.',
-    fn: (products, dedup, flags) => ['Lidl', 'Netto', 'hagebau', 'Kaufland'].map(shop => {
+    fn: (products, dedup, flags) => ['Lidl', 'Netto', 'hagebau', 'Kaufland', 'alpha-mobil.com'].map(shop => {
       const ps = products.filter(p => p.shop === shop), ds = dedup.filter(p => p.shop === shop && p.sterne != null);
       const rev = ds.reduce((s, p) => s + p.bewertungen, 0);
       return {shop, listings: ps.length, alpha: ps.filter(p => p.marke === 'Alpha Motors').length, green: ps.filter(p => p.marke === 'GreenStreet').length, reviews: rev, stars: rev ? ds.reduce((s, p) => s + p.sterne * p.bewertungen, 0) / rev : null, flags: flags.filter(f => f.shop === shop).length};
@@ -333,9 +336,9 @@
   dash.calc('matrix', {inputs: ['products', 'dedup'], title: 'Modelle × Shops', description: 'Günstigster Preis je Modell und Shop (ohne Preise über 10.000 €), Bewertungen ohne Dubletten und gewichtete Sterne.',
     fn: (products, dedup) => {
       const by = {};
-      products.filter(p => p.modell && p.typ !== 'Zubehör').forEach(p => { const r = by[p.modell] = by[p.modell] || {modell: p.modell, marke: p.marke, lidl: null, netto: null, hagebau: null, kaufland: null, listings: 0}; r.listings++; const k = p.shop.toLowerCase(); if (p.preis && p.preis < 10000 && (r[k] == null || p.preis < r[k])) r[k] = p.preis; });
+      products.filter(p => p.modell && p.typ !== 'Zubehör').forEach(p => { const r = by[p.modell] = by[p.modell] || {modell: p.modell, marke: p.marke, lidl: null, netto: null, hagebau: null, kaufland: null, eigen: null, listings: 0}; r.listings++; const k = p.shop === 'alpha-mobil.com' ? 'eigen' : p.shop.toLowerCase(); if (p.preis && p.preis < 10000 && (r[k] == null || p.preis < r[k])) r[k] = p.preis; });
       return Object.values(by).map(r => {
-        const ps = ['lidl', 'netto', 'hagebau', 'kaufland'].map(k => r[k]).filter(v => v != null);
+        const ps = ['lidl', 'netto', 'hagebau', 'kaufland', 'eigen'].map(k => r[k]).filter(v => v != null);
         const ds = dedup.filter(p => p.modell === r.modell && p.sterne != null); const rev = ds.reduce((s, p) => s + p.bewertungen, 0);
         return {...r, shops: products.filter(p => p.modell === r.modell).map(p => p.shop).filter((v, i, a) => a.indexOf(v) === i).length, spanne: ps.length > 1 ? Math.max(...ps) - Math.min(...ps) : null, reviews: rev, stars: rev ? ds.reduce((s, p) => s + p.sterne * p.bewertungen, 0) / rev : null};
       });
@@ -343,6 +346,9 @@
 
   dash.calc('rvstats', {inputs: ['reviews'], title: 'Bewertungs-Kennzahlen', description: 'Zahl der Bewertungstexte gesamt, je Stimmung, neue seit dem letzten Abruf, Datum des letzten Abrufs und abgerufene Händler.',
     fn: (reviews) => [{total: reviews.length, positiv: reviews.filter(r => r.stimmung === 'positiv').length, neutral: reviews.filter(r => r.stimmung === 'neutral').length, negativ: reviews.filter(r => r.stimmung === 'negativ').length, neu: reviews.filter(r => r.neu === true).length, stand: reviews.map(r => r.erfasst).sort().slice(-1)[0] || null, shops: [...new Set(reviews.map(r => r.shop))].join(', ')}]});
+
+  dash.calc('tpstats', {inputs: ['reviews'], title: 'Trustpilot', description: 'Anzahl der erfassten Trustpilot-Bewertungen und Durchschnitt der Sterne.',
+    fn: (reviews) => { const t = reviews.filter(r => r.shop === 'Trustpilot'); return [{n: t.length, stars: t.length ? t.reduce((s, r) => s + r.sterne, 0) / t.length : null}]; }});
 
   dash.calc('themen', {inputs: ['reviews'], title: 'Bewertungen je Thema', description: 'Zählt Bewertungstexte je Thema und Stimmung.',
     fn: (reviews) => { const by = {}; reviews.forEach(r => { const t = r.thema || 'Sonstiges'; const o = by[t] = by[t] || {thema: t, positiv: 0, neutral: 0, negativ: 0, total: 0}; o[r.stimmung] = (o[r.stimmung] || 0) + 1; o.total++; }); return Object.values(by).sort((a, b) => (b.negativ - a.negativ) || (b.total - a.total)); }});
@@ -383,6 +389,8 @@
   dash.draw('k_third', (el) => { const d = dash.data('flagcount'); const r = d.status === 'ok' ? d.data.find(x => x.art === 'Drittanbieter') : null; el.textContent = r ? int(r.n) : '—'; });
   const shopRow = (el) => { const d = dash.data('shops'); return d.status === 'ok' ? d.data.find(x => x.shop === whereVal(el)) : null; };
   dash.draw('shopnum', (el) => { const r = shopRow(el); el.textContent = r ? int(r.listings) : '—'; });
+  dash.draw('tpnum', (el) => { const d = dash.data('tpstats'); el.textContent = d.status === 'ok' ? int(d.data[0].n) : '—'; });
+  dash.draw('tpstar', (el) => { const d = dash.data('tpstats'); el.textContent = d.status === 'ok' ? star(d.data[0].stars) : '—'; });
   dash.draw('shopstar', (el) => { const r = shopRow(el); el.textContent = r ? star(r.stars) : '—'; });
 })();
 </script>
@@ -436,7 +444,7 @@
   });
 
   dash.draw('c_prices', (el) => { const d = dash.data('matrix'); el.replaceChildren(); if (d.status !== 'ok') return;
-    const keys = ['lidl', 'netto', 'hagebau', 'kaufland'], names = ['Lidl', 'Netto', 'hagebau', 'Kaufland'], cols = ['#0050AA', '#F2C200', '#00843D', '#E10915'];
+    const keys = ['lidl', 'netto', 'hagebau', 'kaufland', 'eigen'], names = ['Lidl', 'Netto', 'hagebau', 'Kaufland', 'alpha-mobil.com'], cols = ['#0050AA', '#F2C200', '#00843D', '#E10915', '#004177'];
     const rows = d.data.filter(r => r.shops >= 2).sort((a, b) => b.listings - a.listings).slice(0, 16).sort((a, b) => d3.min(keys, k => a[k]) - d3.min(keys, k => b[k]));
     const W = el.clientWidth || 400, rh = 26, top = 24;
     const svg = d3.select(el).append('svg').attr('width', '100%');
@@ -476,7 +484,7 @@
   document.querySelectorAll('.vx [data-sort]').forEach(b => b.addEventListener('click', () => { const k = b.dataset.sort; msort = {k, dir: msort.k === k ? -msort.dir : (['modell', 'marke'].includes(k) ? 1 : -1)}; dash.draw('t_matrix'); }));
   const cmp = (s) => (a, b) => { const va = a[s.k], vb = b[s.k]; if (va == null && vb == null) return 0; if (va == null) return 1; if (vb == null) return -1; return (typeof va === 'string' ? va.localeCompare(vb) : va - vb) * s.dir; };
   dash.draw('t_matrix', (tb) => { const d = dash.data('matrix'); tb.replaceChildren(); if (d.status !== 'ok') return;
-    d.data.slice().sort(cmp(msort)).forEach(r => { const tr = document.createElement('tr'); const ks = ['lidl', 'netto', 'hagebau', 'kaufland']; const ps = ks.map(k => r[k]).filter(v => v != null); const mn = Math.min(...ps);
+    d.data.slice().sort(cmp(msort)).forEach(r => { const tr = document.createElement('tr'); const ks = ['lidl', 'netto', 'hagebau', 'kaufland', 'eigen']; const ps = ks.map(k => r[k]).filter(v => v != null); const mn = Math.min(...ps);
       tr.append(td(r.modell), td(r.marke, 'muted'));
       ks.forEach(k => { const c = td(eur(r[k]), 'r'); if (r[k] != null && r[k] === mn && ps.length > 1) { c.style.fontWeight = '600'; c.style.color = 'var(--vx-green)'; } tr.append(c); });
       tr.append(td(eur(r.spanne), r.spanne > 500 ? 'r c-warn' : 'r'), td(int(r.shops), 'r')); tb.append(tr); }); });
@@ -521,13 +529,13 @@
   });
 
   const mk = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
-  document.querySelectorAll('.vx .rvsearch, .vx .rvmood, .vx .rvsort').forEach(i => i.addEventListener('input', () => dash.draw('rv_feed')));
+  document.querySelectorAll('.vx .rvsearch, .vx .rvmood, .vx .rvsort, .vx .rvshop').forEach(i => i.addEventListener('input', () => dash.draw('rv_feed')));
   dash.draw('rv_feed', (el) => { const d = dash.data('reviews'); el.replaceChildren(); if (d.status !== 'ok') return;
     const q = ((document.querySelector('.vx .rvsearch') || {}).value || '').toLowerCase().split(/\s+/).filter(Boolean);
-    const mood = (document.querySelector('.vx .rvmood') || {}).value || '';
+    const mood = (document.querySelector('.vx .rvmood') || {}).value || ''; const src = (document.querySelector('.vx .rvshop') || {}).value || '';
     const sort = (document.querySelector('.vx .rvsort') || {}).value || 'datum';
     const rank = {negativ: 0, neutral: 1, positiv: 2};
-    d.data.filter(r => (!mood || r.stimmung === mood) && q.every(w => [r.produkt, r.text, r.thema, r.shop].join(' ').toLowerCase().includes(w)))
+    d.data.filter(r => (!mood || r.stimmung === mood) && (!src || r.shop === src) && q.every(w => [r.produkt, r.text, r.thema, r.shop].join(' ').toLowerCase().includes(w)))
       .sort((a, b) => (b.neu === true) - (a.neu === true) || (sort === 'kritisch' ? (rank[a.stimmung] - rank[b.stimmung]) || (a.sterne - b.sterne) : 0) || b.datum.localeCompare(a.datum))
       .forEach(r => { const c = mk('div', 'rv');
         const h = mk('div', 'h'); if (r.neu === true) h.append(mk('span', 'newb', 'NEU'));
